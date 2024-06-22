@@ -9,7 +9,7 @@ export class PaymentsController {
 
   @Post('create-payment-session')
   createPaymentSession(@Body() createPaymentDto: CreatePaymentDto) {
-   return this.paymentsService.create(createPaymentDto);
+   return this.paymentsService.createPaymentSession(createPaymentDto);
   }
 
   @Get('success')
@@ -24,7 +24,7 @@ export class PaymentsController {
 
   @Post('webhook')
   stripeWebhook(@Body() createPaymentDto: CreatePaymentDto) {
-   return this.paymentsService.create(createPaymentDto);
+   //return this.paymentsService.create(createPaymentDto);
   }
 
   @Delete(':id')
