@@ -4,6 +4,9 @@ import { ArrayMinSize, IsArray, IsNumber, IsPositive, IsString, ValidateNested }
 export class CreatePaymentDto {
 
     @IsString()
+    orderId:string
+
+    @IsString()
     currency:string
 
     @IsArray()

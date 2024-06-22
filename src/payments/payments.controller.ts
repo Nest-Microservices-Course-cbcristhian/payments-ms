@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Res } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
 import { CreatePaymentDto } from './dto/create-payment.dto';
-import { UpdatePaymentDto } from './dto/update-payment.dto';
 
 @Controller('payments')
 export class PaymentsController {
@@ -23,12 +22,8 @@ export class PaymentsController {
   }
 
   @Post('webhook')
-  stripeWebhook(@Body() createPaymentDto: CreatePaymentDto) {
-   //return this.paymentsService.create(createPaymentDto);
+  async stripeWebhook(@Req() req: Request, @Res() res: Response) {
+   return this.paymentsService.stripeWebhook(req,res);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.paymentsService.remove(+id);
-  }
 }
